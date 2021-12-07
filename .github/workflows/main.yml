@@ -1,0 +1,19 @@
+name: Simple test
+
+on:
+  # Triggers the workflow on push for staging branch
+  push:
+    branches:
+      - staging
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: self-hosted
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Run test suite with cargo
+        run: cargo test
