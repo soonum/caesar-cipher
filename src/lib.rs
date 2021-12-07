@@ -198,7 +198,7 @@ mod tests {
         let message = ClearText::<AsciiLowerCaseAlphabet>::try_new("helloworld").unwrap();
 
         let encrypted_message = engine.encrypt(&message);
-        assert_ne!(&encrypted_message, "khoorzruog");
+        assert_eq!(&encrypted_message, "khoorzruog");
 
         let decrypted_message = engine.decrypt(&encrypted_message);
         assert_eq!(decrypted_message, message);
