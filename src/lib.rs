@@ -15,7 +15,7 @@ pub struct Shift(pub usize);
 #[derive(Debug, Eq, PartialEq)]
 pub struct CharacterNotInAlphabet(pub char);
 
-///  Struct that encrypts and decrypts message.
+///     Struct that encrypts and decrypts message.
 ///
 /// An engine is tied to an [Alphabet] and will only be able to
 /// [encrypt] / [decrypt] messages that are in the same `Alphabet`.
