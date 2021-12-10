@@ -104,6 +104,8 @@ impl<A: Alphabet> CaesarEngine<A> {
             _marker: Default::default(),
             message: clear_message,
         }
+
+        
     }
 }
 
