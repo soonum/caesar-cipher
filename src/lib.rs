@@ -12,7 +12,6 @@ pub mod alphabets;
 
 pub struct Shift(pub usize);
 
-
 #[derive(Debug, Eq, PartialEq)]
 pub struct CharacterNotInAlphabet(pub char);
 
