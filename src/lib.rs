@@ -10,6 +10,8 @@ use crate::alphabets::Alphabet;
 
 pub mod alphabets;
 
+
+
 pub struct Shift(pub usize);
 
 #[derive(Debug, Eq, PartialEq)]
