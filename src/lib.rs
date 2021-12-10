@@ -76,6 +76,8 @@ impl<A: Alphabet> CaesarEngine<A> {
         }
     }
 
+
+
     pub fn encrypt(&self, clear_message: &ClearText<A>) -> CipherText<A> {
         let mut encrypted_message = String::with_capacity(clear_message.message.len());
         let alphabet = A::letters();
