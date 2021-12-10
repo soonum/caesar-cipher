@@ -12,8 +12,10 @@ pub mod alphabets;
 
 pub struct Shift(pub usize);
 
+
 #[derive(Debug, Eq, PartialEq)]
 pub struct CharacterNotInAlphabet(pub char);
+
 
 /// Struct that encrypts and decrypts message.
 ///
@@ -57,6 +59,8 @@ pub struct CaesarEngine<A: Alphabet> {
     _marker: std::marker::PhantomData<A>,
     shifted_alphabet: Vec<char>,
 }
+
+
 
 impl<A: Alphabet> CaesarEngine<A> {
     /// Creates a new
