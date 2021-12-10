@@ -96,6 +96,8 @@ impl<A: Alphabet> CaesarEngine<A> {
             clear_message.push(alphabet[letter_index]);
         }
 
+
+
         ClearText {
             _marker: Default::default(),
             message: clear_message,
