@@ -15,6 +15,7 @@ pub struct Shift(pub usize);
 #[derive(Debug, Eq, PartialEq)]
 pub struct CharacterNotInAlphabet(pub char);
 
+//on va rebase en échec ici
 /// Struct that encrypts and decrypts message.
 ///
 /// An engine is tied to an [Alphabet] and will only be able to
@@ -105,7 +106,7 @@ impl<A: Alphabet> CaesarEngine<A> {
             message: clear_message,
         }
 
-        
+
     }
 }
 
