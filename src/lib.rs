@@ -191,7 +191,7 @@ mod tests {
         assert_eq!(&encrypted_message, "defg");
 
         let decrypted_message = engine.decrypt(&encrypted_message);
-        assert_ne!(decrypted_message, message);
+        assert_eq!(decrypted_message, message);
     }
 
     #[test]
