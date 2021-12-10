@@ -137,6 +137,8 @@ pub struct ClearText<A> {
     message: String,
 }
 
+
+
 impl<A: Alphabet> ClearText<A> {
     pub fn try_new<T: ToString>(message: T) -> Result<Self, CharacterNotInAlphabet> {
         let message = message.to_string();
