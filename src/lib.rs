@@ -175,6 +175,8 @@ impl<A: Alphabet> PartialEq<str> for CipherText<A> {
     }
 }
 
+
+
 #[cfg(test)]
 mod tests {
     use super::*;
