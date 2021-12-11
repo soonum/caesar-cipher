@@ -16,6 +16,7 @@ impl Alphabet for AsciiLowerCaseAlphabet {
             'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
         ];
 
+        // Commentaire 1
         &CAESAR_ALPHABET
     }
 }
