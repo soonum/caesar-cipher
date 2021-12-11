@@ -5,6 +5,9 @@ pub trait Alphabet: Debug {
     fn letters() -> &'static [char];
 }
 
+// commentaire conflictuel
+// suite du commentaire
+
 /// This alphabet contains only lowercase ascii letters (and no symbols)
 #[derive(Debug, Eq, PartialEq)]
 pub struct AsciiLowerCaseAlphabet;
