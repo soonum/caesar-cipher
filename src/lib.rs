@@ -10,10 +10,14 @@ use crate::alphabets::Alphabet;
 
 pub mod alphabets;
 
+
+
 pub struct Shift(pub usize);
+
 
 #[derive(Debug, Eq, PartialEq)]
 pub struct CharacterNotInAlphabet(pub char);
+
 
 /// Struct that encrypts and decrypts message.
 ///
@@ -58,6 +62,8 @@ pub struct CaesarEngine<A: Alphabet> {
     shifted_alphabet: Vec<char>,
 }
 
+
+
 impl<A: Alphabet> CaesarEngine<A> {
     /// Creates a new
     pub fn new(shift: Shift) -> Self {
@@ -69,6 +75,8 @@ impl<A: Alphabet> CaesarEngine<A> {
             shifted_alphabet,
         }
     }
+
+
 
     pub fn encrypt(&self, clear_message: &ClearText<A>) -> CipherText<A> {
         let mut encrypted_message = String::with_capacity(clear_message.message.len());
@@ -96,10 +104,14 @@ impl<A: Alphabet> CaesarEngine<A> {
             clear_message.push(alphabet[letter_index]);
         }
 
+
+
         ClearText {
             _marker: Default::default(),
             message: clear_message,
         }
+
+        
     }
 }
 
@@ -132,6 +144,8 @@ pub struct ClearText<A> {
     _marker: std::marker::PhantomData<A>,
     message: String,
 }
+
+
 
 impl<A: Alphabet> ClearText<A> {
     pub fn try_new<T: ToString>(message: T) -> Result<Self, CharacterNotInAlphabet> {
@@ -174,6 +188,8 @@ impl<A: Alphabet> PartialEq<str> for CipherText<A> {
         &self.cipher == other
     }
 }
+
+
 
 #[cfg(test)]
 mod tests {
