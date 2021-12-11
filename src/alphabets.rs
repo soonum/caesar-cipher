@@ -34,4 +34,6 @@ impl Alphabet for IncompleteAscii {
 
         &INCOMPLETE_ASCII
     }
+
+    
 }
