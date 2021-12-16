@@ -36,4 +36,5 @@ impl Alphabet for IncompleteAscii {
 
         &INCOMPLETE_ASCII
     }
+    // Another very useful comment ! :)
 }
