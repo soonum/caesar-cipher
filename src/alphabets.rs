@@ -20,6 +20,8 @@ impl Alphabet for AsciiLowerCaseAlphabet {
     }
 }
 
+// First comment which is fine
+
 #[derive(Debug, Eq, PartialEq)]
 pub struct IncompleteAscii;
 
