@@ -13,12 +13,16 @@ jobs:
   tests:
     runs-on: self-hosted
     steps:
+      - uses: actions/checkout@v2
+      - name: Set up home
+        run: |
+          echo "HOME=/home/ubuntu" >> ${GITHUB_ENV}
       - name: Install Rust
         if: ${{ !cancelled() }}
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
           override: true
-      - uses: actions/checkout@v2
+      
       - name: Run test suite with cargo
         run: cargo test
