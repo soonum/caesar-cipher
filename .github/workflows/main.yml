@@ -23,7 +23,5 @@ jobs:
         with:
           toolchain: stable
           override: true
-      - name: Sleep (test)
-        run: sleep 60
       - name: Run test suite with cargo
         run: cargo test
