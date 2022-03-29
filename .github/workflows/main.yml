@@ -11,7 +11,8 @@ on:
 
 jobs:
   tests:
-    runs-on: [self-hosted, aws_runner_cpu]
+    runs-on: ubuntu-latest
+    #runs-on: [self-hosted, aws_runner_cpu]
     steps:
       - uses: actions/checkout@v2
       - name: Run test suite with cargo
