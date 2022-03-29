@@ -8,12 +8,27 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      instance_ids:
+        description: 'Instance IDs'
+        type: string
+      instance_image_id:
+        description: 'Instance AMI ID'
+        type: string
+      instance_type:
+        description: 'Instance product type'
+        type: string
 
 jobs:
   tests:
     runs-on: ubuntu-latest
     #runs-on: [self-hosted, aws_runner_cpu]
     steps:
+      - name: Instance configuration used
+        run: |
+          echo "IDs: ${{ github.event.inputs.instance_ids }}"
+          echo "AMI: ${{ github.event.inputs.instance_image_id }}"
+          echo "Type: ${{ github.event.inputs.instance_type }}"
       - uses: actions/checkout@v2
       - name: Set up home
         run: |
