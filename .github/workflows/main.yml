@@ -9,8 +9,8 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
-      instance_ids:
-        description: 'Instance IDs'
+      instance_id:
+        description: 'Instance ID'
         type: string
       instance_image_id:
         description: 'Instance AMI ID'
@@ -21,14 +21,16 @@ on:
 
 jobs:
   tests:
-    runs-on: ubuntu-latest
-    #runs-on: [self-hosted, aws_runner_cpu]
+    #runs-on: ubuntu-latest
+    runs-on: [self-hosted, aws_runner_cpu]
     steps:
       - name: Instance configuration used
         run: |
-          echo "IDs: ${{ github.event.inputs.instance_ids }}"
+          echo "IDs: ${{ github.event.inputs.instance_id }}"
           echo "AMI: ${{ github.event.inputs.instance_image_id }}"
           echo "Type: ${{ github.event.inputs.instance_type }}"
       - uses: actions/checkout@v2
       - name: Run test suite with cargo
         run: cargo test
+      - name: EC2 activity tracker check
+        run: sleep 180
