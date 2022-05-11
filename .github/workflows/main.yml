@@ -30,7 +30,7 @@ jobs:
           echo "AMI: ${{ github.event.inputs.instance_image_id }}"
           echo "Type: ${{ github.event.inputs.instance_type }}"
       - uses: actions/checkout@v2
-      - name: Run test suite with cargo
-        run: cargo test
+      #- name: Run test suite with cargo
+      #  run: cargo test
       - name: EC2 activity tracker check
         run: sleep 180
