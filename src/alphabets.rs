@@ -23,6 +23,7 @@ impl Alphabet for AsciiLowerCaseAlphabet {
 #[derive(Debug, Eq, PartialEq)]
 pub struct IncompleteAscii;
 
+// A comment with no impact
 impl Alphabet for IncompleteAscii {
     fn letters() -> &'static [char] {
         const INCOMPLETE_ASCII: [char; 60] = [
