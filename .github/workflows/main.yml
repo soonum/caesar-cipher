@@ -25,5 +25,3 @@ jobs:
           override: true
       - name: Run test suite with cargo
         run: cargo test
-      - name: Sleep to test EC2 activity
-        run: sleep 180
