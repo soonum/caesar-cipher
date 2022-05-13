@@ -18,11 +18,14 @@ on:
       instance_type:
         description: 'Instance product type'
         type: string
+      runner_name:
+        description: 'Action runner name'
+        type: string
 
 jobs:
   tests:
     #runs-on: ubuntu-latest
-    runs-on: [self-hosted, aws_runner_cpu]
+    runs-on: $${{ github.event.inputs.runner_name }}
     steps:
       - name: Instance configuration used
         run: |
