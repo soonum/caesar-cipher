@@ -45,4 +45,4 @@ jobs:
       - name: Run test suite with cargo
         run: cargo test
       - name: EC2 activity tracker check
-        run: sleep 3700
+        run: sleep 60
