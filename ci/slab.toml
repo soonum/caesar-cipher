@@ -1,0 +1,21 @@
+[profile.cpu]
+region = "eu-west-3"
+image_id = "ami-021d41cbdefc0c994" # AWS Linux x86
+instance_type = "t3.micro"
+subnet_id = "subnet-0e042c7621461f754"
+
+[profile.gpu]
+region = "eu-west-1"  # Ireland
+image_id = "ami-0261faf04cf54fe0a"  # GPU image in eu-west-1 to test auto retry
+instance_type = "p3.2xlarge"
+
+[command.cpu_test]
+workflow = "main.yml"
+profile = "cpu"
+check_run_name = "AWS tests (Slab)"
+
+[command.gpu_test]
+workflow = "main.yml"
+profile = "gpu"
+check_run_name = "AWS tests spawn GPU (Slab)"
+
