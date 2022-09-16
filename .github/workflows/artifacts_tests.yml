@@ -1,0 +1,47 @@
+name: Artifact tests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      #- name: Run test suite with cargo
+      #  run: cargo test
+      - name: Generate data
+        run: python3 ci/fake_bench_data_generator.py my_test_results.json
+        shell: bash
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: results
+          path: my_test_results.json
+
+  publication:
+    runs-on: ubuntu-latest
+    needs: generation
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: results
+          path: results_artifact
+
+      - name: Send data to slab
+        shell: bash
+        run: |
+          echo "Computing HMac on downloaded artifact"
+          SIGNATURE="$(./ci/hmac_calculator.sh ./results_artifact/my_test_results.json '${{ secrets.JOB_SECRET }}')"
+
+          echo "Sending results to Slab..."
+          curl -v -k \
+          -H "Content-Type: application/json" \
+          -H "X-Slab-Repository: ${{ github.repository }}" \
+          -H "X-Slab-Command: plot_data" \
+          -H "X-Hub-Signature-256: sha256=${SIGNATURE}" \
+          -d @results_artifact/my_test_results.json \
+          ${{ secrets.SLAB_URL }}
