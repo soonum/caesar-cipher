@@ -21,6 +21,9 @@ on:
       runner_name:
         description: 'Action runner name'
         type: string
+      request_id:
+        description: 'Slab request ID '
+        type: string
 
 jobs:
   tests:
@@ -32,6 +35,7 @@ jobs:
           echo "IDs: ${{ github.event.inputs.instance_id }}"
           echo "AMI: ${{ github.event.inputs.instance_image_id }}"
           echo "Type: ${{ github.event.inputs.instance_type }}"
+          echo "Request ID: ${{ github.event.inputs.request_id }}"
       - uses: actions/checkout@v2
       #- name: Run test suite with cargo
       #  run: cargo test
