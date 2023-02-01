@@ -26,7 +26,7 @@ on:
         type: string
 
 jobs:
-  tests:
+  tests1:
     #runs-on: ubuntu-latest
     runs-on: ${{ github.event.inputs.runner_name }}
     steps:
@@ -41,4 +41,22 @@ jobs:
       #- name: Run test suite with cargo
       #  run: cargo test
       - name: EC2 activity tracker check
-        run: sleep 60
+        #run: echo 999999^999999 | bc
+        run: sleep 45
+#
+#  intermediate_test:
+#    needs: tests1
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: A intermediate sleep
+#        run: sleep 45
+#
+#  tests2:
+#    runs-on: ${{ github.event.inputs.runner_name }}
+#    needs: intermediate_test
+#    steps:
+#      - uses: actions/checkout@v2
+#      #- name: Run test suite with cargo
+#      #  run: cargo test
+#      - name: Another sleep
+#        run: echo 999999^999999 | bc
