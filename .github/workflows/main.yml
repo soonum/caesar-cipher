@@ -45,7 +45,6 @@ jobs:
           echo "AMI: ${{ github.event.inputs.instance_image_id }}"
           echo "Type: ${{ github.event.inputs.instance_type }}"
           echo "Request ID: ${{ github.event.inputs.request_id }}"
-          echo "Matrix item: ${{ github.event.inputs.matrix_item }}"
           echo "Fork user: ${{ github.event.inputs.fork_user }}"
           echo "Fork git ref: ${{ github.event.inputs.fork_git_ref }}"
 
