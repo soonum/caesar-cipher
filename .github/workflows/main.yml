@@ -24,6 +24,15 @@ on:
       request_id:
         description: 'Slab request ID'
         type: string
+      fork_user:
+        description: 'User login of forked repo'
+        type: string
+      fork_git_ref:
+        description: 'Git ref to checkout from fork'
+        type: string
+
+env:
+  REPOSITORY: ${{ inputs.fork_user || github.repository_owner}}/caesar-cipher
 
 jobs:
   tests1:
@@ -37,22 +46,38 @@ jobs:
           echo "Type: ${{ github.event.inputs.instance_type }}"
           echo "Request ID: ${{ github.event.inputs.request_id }}"
           echo "Matrix item: ${{ github.event.inputs.matrix_item }}"
-      - uses: actions/checkout@v2
-      - name: Set up home
-        run: |
-          echo "HOME=/home/ubuntu" >> ${GITHUB_ENV}
-      - name: Install Rust
-        if: ${{ !cancelled() }}
-        uses: actions-rs/toolchain@v1
+          echo "Fork user: ${{ github.event.inputs.fork_user }}"
+          echo "Fork git ref: ${{ github.event.inputs.fork_git_ref }}"
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
         with:
-          toolchain: stable
-          override: true
-      - name: Run test suite with cargo
-        run: cargo test
+          repository: ${{ env.REPOSITORY }}
+          ref: ${{ inputs.fork_git_ref }}
+
+      - name: Show last commit
+        run: |
+          sudo apt install -y git 
+          git show
+
+#      - name: Set up home
+#        run: |
+#          echo "HOME=/home/ubuntu" >> ${GITHUB_ENV}
+#
+#      - name: Install Rust
+#        if: ${{ !cancelled() }}
+#        uses: actions-rs/toolchain@v1
+#        with:
+#          toolchain: stable
+#          override: true
+#
+#      - name: Run test suite with cargo
+#        run: cargo test
+
       - name: EC2 activity tracker check
         #run: echo 999999^999999 | bc
-        run: sleep 45
-#
+        run: sleep 120
+
 #  intermediate_test:
 #    needs: tests1
 #    runs-on: ubuntu-latest
