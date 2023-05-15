@@ -1,6 +1,6 @@
 [profile.cpu]
 region = "eu-west-3"
-image_id = "ami-021d41cbdefc0c994" # AWS Linux x86
+image_id = "ami-05e8e219ac7e82eba" # ubuntu 22.04
 instance_type = "t3.micro"
 subnet_id = "subnet-0e042c7621461f754"
 
