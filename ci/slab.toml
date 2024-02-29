@@ -5,6 +5,12 @@ instance_type = "t3.micro"
 #instance_type = "m6g.large"
 subnet_id = "subnet-0e042c7621461f754"
 
+# Handling backends
+[backend.aws.cpu]
+region = "eu-west-3"
+image_id = "ami-05e8e219ac7e82eba" # ubuntu 22.04
+instance_type = "t3.xlarge"
+
 [profile.cpu_fallback]
 region = "us-east-1"
 image_id = "ami-0c4773f5626d919b6"
