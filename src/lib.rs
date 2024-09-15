@@ -58,6 +58,8 @@ pub struct CaesarEngine<A: Alphabet> {
     shifted_alphabet: Vec<char>,
 }
 
+// Yet a useful comment for batch-merge
+ 
 impl<A: Alphabet> CaesarEngine<A> {
     /// Creates a new
     pub fn new(shift: Shift) -> Self {
