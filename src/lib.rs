@@ -58,6 +58,8 @@ pub struct CaesarEngine<A: Alphabet> {
     shifted_alphabet: Vec<char>,
 }
 
+// A conflicting comment for batch
+
 impl<A: Alphabet> CaesarEngine<A> {
     /// Creates a new
     pub fn new(shift: Shift) -> Self {
