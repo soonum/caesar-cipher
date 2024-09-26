@@ -20,6 +20,10 @@ impl Alphabet for AsciiLowerCaseAlphabet {
     }
 }
 
+// A conflicting comment due to rebase
+// This above comment will cause problem since antoher branch has the same base and also
+// perfom a change here.
+
 #[derive(Debug, Eq, PartialEq)]
 pub struct IncompleteAscii;
 
